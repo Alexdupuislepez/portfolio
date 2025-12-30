@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Alex Dupuis-Lepez</title>
+    <style>
+        /* --- CSS GLOBAL --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e293b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --text-grey: #64748b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            display: flex;
+            justify-content: flex-end; /* Boutons à droite */
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-links { display: flex; gap: 15px; }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+        }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; line-height: 1.2; }
+        .hero span { color: var(--primary); }
+        .hero p { font-size: 1.1rem; color: var(--text-grey); max-width: 600px; margin: 0 auto 30px auto; }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white !important;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3); }
+
+        /* --- SECTIONS --- */
+        .section { padding: 80px 10%; }
+        .section-bg { background-color: var(--bg-light); }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+
+        /* --- GRILLES --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+
+        /* --- ELEMENTS --- */
+        .soft-skills { display: flex; flex-wrap: wrap; gap: 10px; }
+        .soft-tag { background: white; border: 1px solid #e2e8f0; padding: 8px 16px; border-radius: 8px; font-size: 0.9rem; }
+
+        .skill-box h3 { color: var(--primary); margin-bottom: 20px; font-size: 1.2rem; }
+        .skill-item { margin-bottom: 20px; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 500; }
+        .progress-bar { width: 100%; height: 8px; background: #e2e8f0; border-radius: 10px; overflow: hidden; }
+        .progress { height: 100%; background: var(--primary); border-radius: 10px; }
+
+        .project-card {
+            background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0;
+            transition: 0.3s; display: flex; flex-direction: column; padding: 25px;
+        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .tag { color: var(--primary); background: #eff6ff; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 10px; }
+        .card-title { margin: 10px 0; font-size: 1.3rem; }
+        .card-text { font-size: 0.95rem; color: var(--text-grey); margin-bottom: 20px; flex-grow: 1; }
+        .btn-link { color: var(--primary); font-weight: 600; margin-top: auto; }
+
+        /* --- FOOTER --- */
+        .footer { background: var(--secondary); color: white; text-align: center; padding: 60px 20px; }
+        .footer .btn-primary { border: none; } /* Bouton bleu forcé */
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .navbar { justify-content: center; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#about">À propos</a>
+            <a href="#skills">Compétences</a>
+            <a href="#projects">Projets</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Bonjour, je suis <span>Alex Dupuis-Lepez</span></h1>
+        <p>Étudiant en BUT Informatique. Je construis des applications Java robustes et je sécurise les infrastructures Linux qui les hébergent.</p>
+        <a href="#contact" class="btn-primary">Me contacter</a>
+    </section>
+
+    <section id="about" class="section">
+        <div class="section-title">
+            <h2>À Propos de moi</h2>
+            <p style="color:#64748b">Un profil hybride : Dév & Ops</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p style="margin-bottom:15px; color:#64748b">Actuellement en 2ème année de BUT Informatique à l'Université de Lille, je me spécialise dans le développement logiciel structuré (MVC, Design Patterns) sans jamais perdre de vue la couche système.</p>
+                <p style="color:#64748b">Mon objectif est de devenir un développeur complet, capable de comprendre tout le cycle de vie d'une application.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom:15px; color:#2563eb">Mes Atouts</h3>
+                <div class="soft-skills">
+                    <span class="soft-tag">💡 Curiosité</span>
+                    <span class="soft-tag">🤝 Travail d'équipe</span>
+                    <span class="soft-tag">🔍 Rigueur</span>
+                    <span class="soft-tag">🇬🇧 Anglais (B1)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section section-bg">
+        <div class="section-title">
+            <h2>Mes Compétences</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-box">
+                <h3>Développement</h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Java / JavaFX</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Architecture MVC</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-box">
+                <h3>Système & Outils</h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Linux / Bash</span><span>80%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Git / Gitea</span><span>75%</span></div>
+                    <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="section-title">
+            <h2>Projets Récents</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div>
+                    <span class="tag">JAVA</span>
+                </div>
+                <h3 class="card-title">Jeu de Labyrinthes</h3>
+                <p class="card-text">Développement complet d'un jeu avec génération procédurale. Architecture MVC stricte et gestion de version Git.</p>
+                <a href="https://gitlab.univ-lille.fr/sae302/2025/J2_SAE3.3" target="_blank" class="btn-link">Voir le code →</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <span class="tag">LINUX</span>
+                </div>
+                <h3 class="card-title">Infra Gitea</h3>
+                <p class="card-text">Installation et sécurisation d'une forge logicielle sous Debian 12. Automatisation via scripts Bash.</p>
+                <a href="#" class="btn-link">Détails techniques →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <h2 style="margin-bottom:20px">Me contacter</h2>
+        <p style="margin-bottom:30px; opacity: 0.8;">Je suis à la recherche d'un stage de 10 semaines (Avril 2026).</p>
+        <a href="mailto:alexdupuislepez@gmail.com" class="btn-primary">alexdupuislepez@gmail.com</a>
+        <p style="margin-top:40px; font-size:0.8rem; opacity:0.5;">© 2025 Alex Dupuis-Lepez</p>
+    </footer>
+
+</body>
+</html>
