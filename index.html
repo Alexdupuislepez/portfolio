@@ -105,7 +105,7 @@
             border: 4px solid var(--bg-card);
             box-shadow: var(--shadow);
             margin: 0 auto 25px;
-            object-fit: cover; /* Important pour ne pas déformer l'image */
+            object-fit: cover;
             display: block;
         }
 
@@ -160,14 +160,40 @@
         }
         .btn-link:hover { text-decoration: underline; }
 
-        /* --- SKILLS --- */
-        .skill-group { margin-bottom: 25px; }
-        .skill-group h4 { margin-bottom: 8px; font-size: 1rem; color: var(--text-main); }
-        .progress-bar {
-            width: 100%; height: 10px; background: var(--border);
-            border-radius: 10px; overflow: hidden;
+        /* --- SKILLS (NOUVEAU STYLE SANS BARRES) --- */
+        .skill-category { margin-bottom: 25px; }
+        .skill-category h4 { 
+            margin-bottom: 12px; font-size: 1.1rem; 
+            color: var(--text-main); font-weight: 600;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.1);
+            padding-bottom: 5px;
+            display: inline-block;
         }
-        .progress-fill { height: 100%; background: var(--primary); border-radius: 10px; }
+        
+        .skill-tags {
+            display: flex; flex-wrap: wrap; gap: 10px;
+        }
+        
+        .skill-pill {
+            background: var(--bg-body);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        
+        .skill-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            background: rgba(59, 130, 246, 0.05);
+        }
+        
+        .skill-pill i { color: var(--primary); }
 
         /* --- TIMELINE --- */
         .timeline-item {
@@ -251,14 +277,14 @@
             </div>
             <div class="card">
                 <h3><i class="fas fa-bolt" style="color:var(--primary)"></i> Soft Skills</h3>
-                <div class="tech-stack">
-                    <span class="badge">💡 Curiosité</span>
-                    <span class="badge">🤝 Travail d'équipe</span>
-                    <span class="badge">🇬🇧 Anglais Technique (B1)</span>
-                    <span class="badge">🔍 Rigueur</span>
-                    <span class="badge">⚡ Adaptabilité</span>
+                <div class="skill-tags">
+                    <span class="skill-pill">💡 Curiosité</span>
+                    <span class="skill-pill">🤝 Travail d'équipe</span>
+                    <span class="skill-pill">🇬🇧 Anglais Technique (B1)</span>
+                    <span class="skill-pill">🔍 Rigueur</span>
+                    <span class="skill-pill">⚡ Adaptabilité</span>
                 </div>
-                <p>Je crois fermement qu'un bon développeur est avant tout quelqu'un qui sait communiquer et apprendre en continu.</p>
+                <p style="margin-top: 15px;">Je crois fermement qu'un bon développeur est avant tout quelqu'un qui sait communiquer et apprendre en continu.</p>
             </div>
         </div>
     </section>
@@ -272,36 +298,60 @@
             <div class="card">
                 <h3><i class="fab fa-java"></i> Développement</h3>
                 
-                <div class="skill-group">
-                    <h4>Java / JavaFX</h4>
-                    <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+                <div class="skill-category">
+                    <h4>Langages & Frameworks</h4>
+                    <div class="skill-tags">
+                        <span class="skill-pill"><i class="fab fa-java"></i> Java</span>
+                        <span class="skill-pill"><i class="fas fa-code"></i> JavaFX</span>
+                        <span class="skill-pill"><i class="fab fa-python"></i> Python</span>
+                    </div>
                 </div>
-                <div class="skill-group">
-                    <h4>SQL / Postgres</h4>
-                    <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+                
+                <div class="skill-category">
+                    <h4>Bases de données</h4>
+                    <div class="skill-tags">
+                        <span class="skill-pill"><i class="fas fa-database"></i> SQL</span>
+                        <span class="skill-pill"><i class="fas fa-server"></i> PostgreSQL</span>
+                    </div>
                 </div>
-                <div class="tech-stack" style="margin-top:15px">
-                    <span class="badge">MVC</span>
-                    <span class="badge">POO</span>
-                    <span class="badge">Algo</span>
+
+                <div class="skill-category">
+                    <h4>Concepts</h4>
+                    <div class="skill-tags">
+                        <span class="skill-pill">MVC</span>
+                        <span class="skill-pill">POO</span>
+                        <span class="skill-pill">Algo</span>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
                 <h3><i class="fab fa-linux"></i> Ops & Système</h3>
                 
-                <div class="skill-group">
-                    <h4>Linux (Debian) / Bash</h4>
-                    <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+                <div class="skill-category">
+                    <h4>Système</h4>
+                    <div class="skill-tags">
+                        <span class="skill-pill"><i class="fab fa-linux"></i> Linux (Debian)</span>
+                        <span class="skill-pill"><i class="fas fa-terminal"></i> Bash Scripting</span>
+                    </div>
                 </div>
-                <div class="skill-group">
-                    <h4>Docker / Conteneurisation</h4>
-                    <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+
+                <div class="skill-category">
+                    <h4>Outils & DevOps</h4>
+                    <div class="skill-tags">
+                        <span class="skill-pill"><i class="fab fa-docker"></i> Docker</span>
+                        <span class="skill-pill"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="skill-pill"><i class="fab fa-github"></i> GitHub/Gitea</span>
+                    </div>
                 </div>
-                <div class="tech-stack" style="margin-top:15px">
-                    <span class="badge">Git</span>
-                    <span class="badge">Réseau L2/L3</span>
-                    <span class="badge">SSH</span>
+
+                <div class="skill-category">
+                    <h4>Réseau</h4>
+                    <div class="skill-tags">
+                        <span class="skill-pill">SSH</span>
+                        <span class="skill-pill">Modèle OSI (L2/L3)</span>
+                        <span class="skill-pill">DNS/DHCP</span>
+                    </div>
                 </div>
             </div>
 
@@ -309,7 +359,10 @@
                 <span class="date">2024 - PRÉSENT</span>
                 <h4>BUT Informatique</h4>
                 <p>Université de Lille</p>
-                <p style="font-size:0.9rem; color:var(--text-secondary)">Spécialisation Dév & Admin Sys.</p>
+                <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom: 15px;">Spécialisation Dév & Admin Sys.</p>
+                <div class="skill-tags">
+                    <span class="skill-pill" style="font-size:0.8rem">🎓 2ème Année</span>
+                </div>
             </div>
         </div>
     </section>
